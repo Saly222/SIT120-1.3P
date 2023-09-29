@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Poll</title>
+    <link rel="stylesheet" href="styles1.1.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+</head>
+<body>
+    <header>
+        Voting Poll
+    </header>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="frontpage.html">Home</a></li>
+                <li><a href="1.1.html">Task 1.1</a></li>
+                <li><a href="1.2.html">Task 1.2</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <table>
+        <tr>
+            <th><img src="Green-Party-Logo-Google.avif" alt="Green Party" style="width:100px;height:100px;"></th>
+            <th><img src="ALP_logo_2017.svg.png" alt="Labour Party" style="width:100px;height:100px;"></th>
+            <th><img src="Liberal_Party_of_Australia_logo.svg.png" alt="Liberal Party" style="width:100px;height:100px;"></th>
+        </tr>
+    </table>
+
+    <form class="formstyle">
+        <label for="name">Name: </label>
+        <input v-model="formData.name" type="text" name="name">
+        <br>
+        <label for="email">Email: </label>
+        <input v-model="formData.email" type="text" name="email">
+    
+        <div>
+            <label for="age">Age: </label>
+            <input v-model="formData.age" type="text" name="age">
+        </div>
+    
+        <br>
+        <label for="phoneNumber">Phone Number: </label>
+        <input v-model="formData.phoneNumber" type="text" name="phoneNumber">
+    
+        <div></div>
+    
+        <select v-model="selectedOption" name="selectedOption">
+            <option selected disabled> Select an option</option>
+            <option> First Option </option>
+            <option> Second Option</option>
+            <option> Third Option</option>
+        </select>
+        <div></div>
+    
+                
+
+        
+        <div>
+            <fieldset>
+                <h2> Please check all the boxes relevant:</h2>
+                <label><input type="checkbox" name="relevantOption" value="First Option"> First Option </label>
+                <br>
+                <label><input type="checkbox" name="relevantOption" value="Second Option"> Second Option </label>
+                <br>
+                <label><input type="checkbox" name="relevantOption" value="Third Option"> Third Option </label>
+            </fieldset>
+        </div>
+    
+        <div>
+            <fieldset>
+                <h2> Please select one option:</h2>
+                <label><input type="radio" name="selectedRadio" value="First Option"> First Option </label>
+                <br>
+                <label><input type="radio" name="selectedRadio" value="Second Option"> Second Option </label>
+                <br>
+                <label><input type="radio" name="selectedRadio" value="Third Option"> Third Option </label>
+            </fieldset>
+        </div>
+        
+        <div>
+            Pick a date: <input v-model="selectedDate" type="date" name="Selecteddate" value=""/>
+        </div>
+    
+        <div>
+            <fieldset>
+                <textarea v-model="comment" style="height: 100px; width: 200px;" id="comment" name="comment">Please provide your comment</textarea>
+            </fieldset>
+        </div>
+    
+        <div>
+            <input class="submitbutton" type="submit" value="Submit" @click="handleSubmit" />
+        </div>
+    </form>
+
+    <footer>
+        <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <div id="app"></div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    formData: {
+                        name: "",
+                        email: "",
+                        age: "",
+                        phoneNumber: "",
+                    },
+                    selectedOption: "",
+                    relevantOptions: [
+                        { label: "First Option", value: "First Option" },
+                        { label: "Second Option", value: "Second Option" },
+                        { label: "Third Option", value: "Third Option" },
+                    ],
+                    selectedRelevantOptions: [],
+                    radioOptions: [
+                        { label: "First Option", value: "First Option" },
+                        { label: "Second Option", value: "Second Option" },
+                        { label: "Third Option", value: "Third Option" },
+                    ],
+                    selectedRadioOption: "",
+                    selectedDate: "",
+                    comment: "",
+                };
+            },
+            methods: {
+                handleSubmit() {
+                    // Handle form submission here, access data via this.formData
+                    console.log("Form submitted:", this.formData);
+                    console.log("Selected option:", this.selectedOption);
+                    console.log("Selected relevant options:", this.selectedRelevantOptions);
+                    console.log("Selected radio option:", this.selectedRadioOption);
+                    console.log("Selected date:", this.selectedDate);
+                    console.log("Comment:", this.comment);
+                },
+                indexToWord(index) {
+                    const words = ["Frist", "Second", "Third"];
+                    return words[index - 1] || index;
+                },
+            },
+        });
+
+        app.mount("#app");
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector(".formstyle");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); 
+
+                const formData = new FormData(form);
+                let message = "Form Data:\n";
+                for (const [key, value] of formData.entries()) {
+                    message += `${key}: ${value}\n`;
+                }
+
+                const partyChoice = document.querySelector('input[name="game"]:checked');
+                if (partyChoice) {
+                    message += `Party Choice: ${partyChoice.value}\n`;
+                }
+
+                alert(message);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.3.css">
+    <title>MY Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to my Portfolio</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="frontpage.html">Home</a></li>
+            <li><a href="1.1.html">Task 1.1</a></li>
+            <li><a href="1.2.html">Task 1.2</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="app">
+            <div v-html="content"></div>
+        </div>
+    </main>
+    <router-view>
+        <h2>
+            "Welcome to my programming Portfolio!
+
+Here, I'll showcase my proficiency in HTML, Java, and Vue 3 through a series of accomplished tasks: 1.1, 1.2
+Driven by a passion for crafting digital solutions, I've honed and enhanced my skills in these languages to develop robust and user-friendly applications. My journey has led me to create dynamic web pages, implement Java-based functionalities, and build interactive Vue 3 components.
+
+I invite you to explore the tasks linked on this page to witness how I've approached diverse programming challenges and harnessed my expertise in these languages. I'm thrilled to share my experiences with you, and I hope you find my work both inspiring and informative. Thank you for visiting!"
+        </h2>
+        <section class="services">
+            <div class="service">
+                <img src="1.1.png" alt="Service 1">
+                <h3>Project 1</h3>
+            </div>
+            <div class="service">
+                <img src="1.2.png" alt="Service 2">
+                <h3>Project 2</h3>
+            </div>
+        </section>
+    </router-view>
+    <footer>
+        <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    content: ''
+                };
+            }
+        });
+
+        const router = VueRouter.createRouter({
+            history: VueRouter.createWebHashHistory(),
+            routes: [
+                { path: '/', component: Home },
+                { path: '/task1.1', component: loadTask1_1 },
+                { path: '/task1.2', component: loadTask1_2 }
+            ]
+        });
+
+        const Home = { template: '<h1>Welcome to my Portfolio</h1>' };
+
+        async function loadContent(url) {
+            const response = await fetch(url);
+            return response.text();
+        }
+
+        const loadTask1_1 = async () => {
+            app.content = await loadContent('1.1.html');
+        };
+
+        const loadTask1_2 = async () => {
+            app.content = await loadContent('1.2.html');
+        };
+
+        app.use(router);
+        app.mount('#app');
+    </script>
+</body>
+</html>

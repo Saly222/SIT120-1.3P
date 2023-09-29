@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Concepts</title>
+    <link rel="stylesheet" href="styles1.2.css">
+    
+</head>
+<body>
+    <header>
+       JavaScript Concepts Implementation
+    </header>
+        <nav>
+            <ul>
+                <li><a href="frontpage.html">Home</a></li>
+                <li><a href="1.1.html">Task 1.1</a></li>
+                <li><a href="1.2.html">Task 1.2</a></li>
+    
+            </ul>
+        </nav>
+    <div class="container">
+
+        <h2>String Methods</h2>
+        <input type="text" id="userInputString" placeholder="Enter a string">
+        <button onclick="processStringLength()">String Length</button>
+        <button onclick="processToUpperCase()">To Uppercase</button>
+        <button onclick="processToLowerCase()">To Lowercase</button>
+        <button onclick="processSubstring()">Substring</button>
+        <button onclick="processIndexOf()">Index of "World"</button>
+        <p id="stringOutput"></p>
+
+        <h2>Number Methods</h2>
+        <input type="number" id="userInputNumber" placeholder="Enter a number">
+        <button onclick="processToFixed()">To Fixed (2 decimal places)</button>
+        <button onclick="processToExponential()">To Exponential</button>
+        <button onclick="processMathFloor()">Math Floor</button>
+        <button onclick="processMathRandom()">Math Random</button>
+        <button onclick="processMathMax()">Math Max (5, 10, 2)</button>
+        <p id="numberOutput"></p>
+
+        <h2>Array Methods</h2>
+        <input type="text" id="userInputArray" placeholder="Enter an array (comma-separated)">
+        <button onclick="processArrayLength()">Array Length</button>
+        <button onclick="processReverseArray()">Reverse Array</button>
+        <button onclick="processIndexOfArray()">Index of "four"</button>
+        <button onclick="processJoinArray()">Join Array</button>
+        <button onclick="processSliceArray()">Slice Array (1-4)</button>
+        <p id="arrayOutput"></p>
+
+        <h2>Date Methods</h2>
+        <button onclick="processCurrentDate()">Current Date</button>
+        <button onclick="processYear()">Year</button>
+        <button onclick="processMonth()">Month (0-11)</button>
+        <button onclick="processDay()">Day of the Month</button>
+        <button onclick="processHours()">Hours (0-23)</button>
+        <p id="dateOutput"></p>
+
+        <h2>Function Methods</h2>
+        <input type="text" id="userInputName" placeholder="Enter your name">
+        <input type="number" id="userInputNum1" placeholder="Enter a number">
+        <input type="number" id="userInputNum2" placeholder="Enter another number">
+        <button onclick="processGreet()">Greet</button>
+        <button onclick="processAdd()">Add</button>
+        <button onclick="processMultiply()">Multiply</button>
+        <button onclick="processDivide()">Divide</button>
+        <button onclick="processSubtract()">Subtract</button>
+        <p id="functionOutput"></p>
+    </div>
+    <footer>
+        <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+    </footer>
+    <script>
+        // String methods
+        function processStringLength() {
+            let userInputString = document.getElementById('userInputString').value;
+            let stringOutput = document.getElementById('stringOutput');
+            stringOutput.innerHTML = 'String Length: ' + userInputString.length;
+        }
+
+        function processToUpperCase() {
+            let userInputString = document.getElementById('userInputString').value;
+            let stringOutput = document.getElementById('stringOutput');
+            stringOutput.innerHTML = 'Uppercase: ' + userInputString.toUpperCase();
+        }
+
+        function processToLowerCase() {
+            let userInputString = document.getElementById('userInputString').value;
+            let stringOutput = document.getElementById('stringOutput');
+            stringOutput.innerHTML = 'Lowercase: ' + userInputString.toLowerCase();
+        }
+
+        function processSubstring() {
+            let userInputString = document.getElementById('userInputString').value;
+            let stringOutput = document.getElementById('stringOutput');
+            stringOutput.innerHTML = 'Substring: ' + userInputString.substring(0, 5);
+        }
+
+        function processIndexOf() {
+            let userInputString = document.getElementById('userInputString').value;
+            let stringOutput = document.getElementById('stringOutput');
+            stringOutput.innerHTML = 'Index of "World": ' + userInputString.indexOf('World');
+        }
+
+        // Number methods
+        function processToFixed() {
+            let userInputNumber = parseFloat(document.getElementById('userInputNumber').value);
+            let numberOutput = document.getElementById('numberOutput');
+            numberOutput.innerHTML = 'To Fixed (2 decimal places): ' + userInputNumber.toFixed(2);
+        }
+
+        function processToExponential() {
+            let userInputNumber = parseFloat(document.getElementById('userInputNumber').value);
+            let numberOutput = document.getElementById('numberOutput');
+            numberOutput.innerHTML = 'To Exponential: ' + userInputNumber.toExponential();
+        }
+
+        function processMathFloor() {
+            let userInputNumber = parseFloat(document.getElementById('userInputNumber').value);
+            let numberOutput = document.getElementById('numberOutput');
+            numberOutput.innerHTML = 'Math Floor: ' + Math.floor(userInputNumber);
+        }
+
+        function processMathRandom() {
+            let numberOutput = document.getElementById('numberOutput');
+            numberOutput.innerHTML = 'Math Random: ' + Math.random();
+        }
+
+        function processMathMax() {
+            let numberOutput = document.getElementById('numberOutput');
+            numberOutput.innerHTML = 'Math Max (5, 10, 2): ' + Math.max(5, 10, 2);
+        }
+
+        // Array methods
+        function processArrayLength() {
+            let userInputArray = document.getElementById('userInputArray').value.split(',');
+            let arrayOutput = document.getElementById('arrayOutput');
+            arrayOutput.innerHTML = 'Array Length: ' + userInputArray.length;
+        }
+
+        function processReverseArray() {
+            let userInputArray = document.getElementById('userInputArray').value.split(',');
+            let arrayOutput = document.getElementById('arrayOutput');
+            arrayOutput.innerHTML = 'Reverse Array: ' + userInputArray.reverse();
+        }
+
+        function processIndexOfArray() {
+            let userInputArray = document.getElementById('userInputArray').value.split(',');
+            let arrayOutput = document.getElementById('arrayOutput');
+            arrayOutput.innerHTML = 'Index of "four": ' + userInputArray.indexOf('four');
+        }
+
+        function processJoinArray() {
+            let userInputArray = document.getElementById('userInputArray').value.split(',');
+            let arrayOutput = document.getElementById('arrayOutput');
+            arrayOutput.innerHTML = 'Join Array: ' + userInputArray.join('-');
+        }
+
+        function processSliceArray() {
+            let userInputArray = document.getElementById('userInputArray').value.split(',');
+            let arrayOutput = document.getElementById('arrayOutput');
+            arrayOutput.innerHTML = 'Slice Array (1-4): ' + userInputArray.slice(1, 4);
+        }
+
+        // Date methods
+        function processCurrentDate() {
+            let date = new Date();
+            let dateOutput = document.getElementById('dateOutput');
+            dateOutput.innerHTML = 'Current Date: ' + date.toString();
+        }
+
+        function processYear() {
+            let date = new Date();
+            let dateOutput = document.getElementById('dateOutput');
+            dateOutput.innerHTML = 'Year: ' + date.getFullYear();
+        }
+
+        function processMonth() {
+            let date = new Date();
+            let dateOutput = document.getElementById('dateOutput');
+            dateOutput.innerHTML = 'Month (0-11): ' + date.getMonth();
+        }
+
+        function processDay() {
+            let date = new Date();
+            let dateOutput = document.getElementById('dateOutput');
+            dateOutput.innerHTML = 'Day of the Month: ' + date.getDate();
+        }
+
+        function processHours() {
+            let date = new Date();
+            let dateOutput = document.getElementById('dateOutput');
+            dateOutput.innerHTML = 'Hours (0-23): ' + date.getHours();
+        }
+
+        // Function methods
+        function processGreet() {
+            let userName = document.getElementById('userInputName').value;
+            let functionOutput = document.getElementById('functionOutput');
+            functionOutput.innerHTML = 'Hello, ' + userName + '!';
+        }
+
+        function processAdd() {
+            let num1 = parseFloat(document.getElementById('userInputNum1').value);
+            let num2 = parseFloat(document.getElementById('userInputNum2').value);
+            let functionOutput = document.getElementById('functionOutput');
+            functionOutput.innerHTML = 'Addition: ' + (num1 + num2);
+        }
+
+        function processMultiply() {
+            let num1 = parseFloat(document.getElementById('userInputNum1').value);
+            let num2 = parseFloat(document.getElementById('userInputNum2').value);
+            let functionOutput = document.getElementById('functionOutput');
+            functionOutput.innerHTML = 'Multiplication: ' + (num1 * num2);
+        }
+
+        function processDivide() {
+            let num1 = parseFloat(document.getElementById('userInputNum1').value);
+            let num2 = parseFloat(document.getElementById('userInputNum2').value);
+            let functionOutput = document.getElementById('functionOutput');
+            functionOutput.innerHTML = 'Division: ' + (num1 / num2);
+        }
+
+        function processSubtract() {
+            let num1 = parseFloat(document.getElementById('userInputNum1').value);
+            let num2 = parseFloat(document.getElementById('userInputNum2').value);
+            let functionOutput = document.getElementById('functionOutput');
+            functionOutput.innerHTML = 'Subtraction: ' + (num1 - num2);
+        }
+    </script>
+</body>
+</html>
